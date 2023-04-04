@@ -21,7 +21,8 @@ class PricesControllerTest
         webTestClient.get().uri( PricesController.PRICES_PATH + "?branchId=1&productId=35455&date=2020-06-14T10:00:00" )
                 .exchange()
                 .expectStatus().isOk()
-                .expectBody().jsonPath( "$.price" ).isEqualTo( 35.50 )
+                .expectBody()
+                .jsonPath( "$.price" ).isEqualTo( 35.50 )
                 .jsonPath( "$.curr" ).isEqualTo( "EUR" );
     }
 
@@ -32,7 +33,8 @@ class PricesControllerTest
         webTestClient.get().uri( PricesController.PRICES_PATH + "?branchId=1&productId=35455&date=2020-06-14T16:00:00" )
                 .exchange()
                 .expectStatus().isOk()
-                .expectBody().jsonPath( "$.price" ).isEqualTo( 25.45 )
+                .expectBody()
+                .jsonPath( "$.price" ).isEqualTo( 25.45 )
                 .jsonPath( "$.curr" ).isEqualTo( "EUR" );
     }
 
@@ -43,7 +45,8 @@ class PricesControllerTest
         webTestClient.get().uri( PricesController.PRICES_PATH + "?branchId=1&productId=35455&date=2020-06-14T21:00:00" )
                 .exchange()
                 .expectStatus().isOk()
-                .expectBody().jsonPath( "$.price" ).isEqualTo( 35.50 )
+                .expectBody()
+                .jsonPath( "$.price" ).isEqualTo( 35.50 )
                 .jsonPath( "$.curr" ).isEqualTo( "EUR" );
     }
 
@@ -54,7 +57,8 @@ class PricesControllerTest
         webTestClient.get().uri( PricesController.PRICES_PATH + "?branchId=1&productId=35455&date=2020-06-15T10:00:00" )
                 .exchange()
                 .expectStatus().isOk()
-                .expectBody().jsonPath( "$.price" ).isEqualTo( 30.50 )
+                .expectBody()
+                .jsonPath( "$.price" ).isEqualTo( 30.50 )
                 .jsonPath( "$.curr" ).isEqualTo( "EUR" );
     }
 
@@ -65,7 +69,8 @@ class PricesControllerTest
         webTestClient.get().uri( PricesController.PRICES_PATH + "?branchId=1&productId=35455&date=2020-06-16T21:00:00" )
                 .exchange()
                 .expectStatus().isOk()
-                .expectBody().jsonPath( "$.price" ).isEqualTo( 38.95 )
+                .expectBody()
+                .jsonPath( "$.price" ).isEqualTo( 38.95 )
                 .jsonPath( "$.curr" ).isEqualTo( "EUR" );
     }
 
