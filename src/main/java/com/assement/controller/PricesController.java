@@ -26,7 +26,7 @@ public class PricesController
                                      @Param( "productId" ) final int productId,
                                      @Param( "date" ) final LocalDateTime date )
     {
-        return pricesService.getDynamicPrice( branchId, productId, date, date )
+        return pricesService.getDynamicPrice( branchId, productId, date )
                 .switchIfEmpty( Mono.error( new ResponseStatusException( HttpStatus.NOT_FOUND ) ) );
     }
 }

@@ -17,11 +17,10 @@ public class PricesServiceImpl implements PricesService
     private final PricesMapper pricesMapper;
 
     @Override
-    public Mono<PricesDTO> getDynamicPrice( final int branchId, final int productId, final LocalDateTime date,
-                                            final LocalDateTime date2 )
+    public Mono<PricesDTO> getDynamicPrice( final int branchId, final int productId, final LocalDateTime date)
     {
         return pricesRepository.findFirstByBranchIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualOrderByPriorityDesc(
-                        branchId, productId, date, date2 )
+                        branchId, productId, date, date )
                 .map( pricesMapper::pricesToPricesDto );
 
     }

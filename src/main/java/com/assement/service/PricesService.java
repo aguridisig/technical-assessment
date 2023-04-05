@@ -8,5 +8,5 @@ import reactor.core.publisher.Mono;
 public interface PricesService
 {
 
-    Mono<PricesDTO> getDynamicPrice( final int branchId, final int productId, final LocalDateTime date, final LocalDateTime date2);
+    Mono<PricesDTO> getDynamicPrice( final int branchId, final int productId, final LocalDateTime date);
 }
