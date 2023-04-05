@@ -17,9 +17,6 @@ class PricesControllerTest
     @Autowired
     PricesController pricesController;
 
-    @Autowired
-    MockMvc mockMvc;
-
     @Test
     @Order( 1 )
     void getPriceFor10HDay14()
