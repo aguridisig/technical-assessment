@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import com.assement.dto.PricesDTO;
 
 @SpringBootTest
@@ -21,7 +22,7 @@ class PricesControllerTest
     @Order( 1 )
     void getPriceFor10HDay14()
     {
-        Optional<PricesDTO> result =
+        final Optional<PricesDTO> result =
                 pricesController.getDynamicPrice( 1, 35455, LocalDateTime.parse( "2020-06-14T10:00:00" ) );
         assertTrue( result.isPresent() );
         assertEquals( 35.50, result.get().getPrice() );
@@ -31,7 +32,7 @@ class PricesControllerTest
     @Order( 2 )
     void getPriceFor16HDay14()
     {
-        Optional<PricesDTO> result =
+        final Optional<PricesDTO> result =
                 pricesController.getDynamicPrice( 1, 35455, LocalDateTime.parse( "2020-06-14T16:00:00" ) );
         assertTrue( result.isPresent() );
         assertEquals( 25.45, result.get().getPrice() );
@@ -41,7 +42,7 @@ class PricesControllerTest
     @Order( 3 )
     void getPriceFor21HDay14()
     {
-        Optional<PricesDTO> result =
+        final Optional<PricesDTO> result =
                 pricesController.getDynamicPrice( 1, 35455, LocalDateTime.parse( "2020-06-14T21:00:00" ) );
         assertTrue( result.isPresent() );
         assertEquals( 35.50, result.get().getPrice() );
@@ -51,7 +52,7 @@ class PricesControllerTest
     @Order( 4 )
     void getPriceFor10HDay15()
     {
-        Optional<PricesDTO> result =
+        final Optional<PricesDTO> result =
                 pricesController.getDynamicPrice( 1, 35455, LocalDateTime.parse( "2020-06-15T10:00:00" ) );
         assertTrue( result.isPresent() );
         assertEquals( 30.50, result.get().getPrice() );
@@ -61,7 +62,7 @@ class PricesControllerTest
     @Order( 5 )
     void getPriceFor21HDay16()
     {
-        Optional<PricesDTO> result =
+        final Optional<PricesDTO> result =
                 pricesController.getDynamicPrice( 1, 35455, LocalDateTime.parse( "2020-06-16T21:00:00" ) );
         assertTrue( result.isPresent() );
         assertEquals( 38.95, result.get().getPrice() );
@@ -71,9 +72,9 @@ class PricesControllerTest
     @Order( 6 )
     void getPriceNotFound()
     {
-        Optional<PricesDTO> result =
-                pricesController.getDynamicPrice( 1, 35455, LocalDateTime.parse( "2023-06-16T21:00:00" ) );
-        assertTrue( result.isEmpty() );
+        final ResponseStatusException thrown = assertThrows( ResponseStatusException.class,
+                () -> pricesController.getDynamicPrice( 1, 35455, LocalDateTime.parse( "2023-06-17T21:00:00" ) ) );
+        assertEquals( HttpStatus.NOT_FOUND, thrown.getStatusCode() );
     }
 
 }
