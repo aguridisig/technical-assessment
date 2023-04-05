@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import com.assement.domain.Prices;
+import com.assement.entities.Prices;
 import com.assement.repository.PricesRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,8 +21,8 @@ public class BootstrapData implements CommandLineRunner
     {
         log.info( "Loading Prices Data" );
         loaderPricesData();
-        pricesRepository.count().subscribe(count ->
-                log.info("Number of price lists loaded: " + count));
+        pricesRepository.count().subscribe( count ->
+                log.info( "Number of price lists loaded: " + count ) );
 
     }
 
@@ -38,7 +38,7 @@ public class BootstrapData implements CommandLineRunner
                                 .priority( 0 )
                                 .startDate( LocalDateTime.parse( "2020-06-14T00:00:00" ) )
                                 .endDate( LocalDateTime.parse( "2020-12-31T23:59:59" ) )
-                                .price( 35.50)
+                                .price( 35.50 )
                                 .curr( "EUR" )
                                 .build();
                         final Prices prices2 = Prices.builder()
@@ -65,7 +65,7 @@ public class BootstrapData implements CommandLineRunner
                                 .priority( 1 )
                                 .startDate( LocalDateTime.parse( "2020-06-15T16:00:00" ) )
                                 .endDate( LocalDateTime.parse( "2020-12-31T23:59:59" ) )
-                                .price( 38.95)
+                                .price( 38.95 )
                                 .curr( "EUR" )
                                 .build();
                         pricesRepository.save( prices1 ).subscribe();

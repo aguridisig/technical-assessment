@@ -1,4 +1,4 @@
-package com.assement.domain;
+package com.assement.entities;
 
 import java.time.LocalDateTime;
 import org.springframework.data.annotation.Id;

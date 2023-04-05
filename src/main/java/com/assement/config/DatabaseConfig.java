@@ -12,7 +12,7 @@ import io.r2dbc.spi.ConnectionFactory;
 @Configuration
 public class DatabaseConfig
 {
-    @Value("classpath:/schema.sql")
+    @Value( "classpath:/schema.sql" )
     Resource schemaScript;
 
     @Bean
