@@ -19,7 +19,7 @@ public class PricesController
 {
     private final PricesService pricesService;
 
-    public static final String PRICES_PATH = "/api/v1/prices/dynamic";
+    public static final String PRICES_PATH = "/api/v1/prices";
 
     @GetMapping( PRICES_PATH )
     Mono<PricesDTO> getDynamicPrice( @Param( "branchId" ) final int branchId,
